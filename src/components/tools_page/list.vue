@@ -1,11 +1,14 @@
 <template>
   <div>
-   <template v-if="tools">
-     <ToolCard v-for="(tool, key) in tools" :key="key"
-      :title="tool.title"
-      :description="tool.description"
-      :tags="tool.tags"
-    ></ToolCard>
+   <template v-if="tools.length">
+      <Tool v-for="(tool, key) in tools" 
+        :key="key"
+        :title="tool.name"
+        :description="tool.description"
+        :tags="tool.tags"
+        :index="key"
+        :id="tool.id"
+      ></Tool>
    </template>
    <template v-else>
      <p>No tools found</p>
@@ -15,7 +18,7 @@
 </template>
 
 <script>
-import ToolCard from './tool_card';
+import Tool from './tool';
 
 export default {
   name: 'tools_list',
@@ -23,7 +26,7 @@ export default {
     'tools'
   ],
   components:{
-    ToolCard
+    Tool
   }
 }
 </script>

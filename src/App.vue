@@ -4,6 +4,7 @@
         <v-main>
             <v-container fluid>
               <Home />
+              <MakeToast />
             </v-container>
         </v-main>
     </v-app>
@@ -13,11 +14,12 @@
 
 <script>
 import Home from './pages/home';
-
+import MakeToast from "./components/make_toast";
 export default {
   name: 'App', 
   components:{
-    Home
+    Home,
+    MakeToast
   }
 }
 </script>

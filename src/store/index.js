@@ -18,7 +18,7 @@ export default new Vuex.Store({
         },
         async getTools({commit}){
             try{
-                let {data} = await Vue.axios.get('/tool');
+                let {data} = await Vue.axios.get('/v1/tool');
                 commit('SET_TOOLS', data);
                 return true;
             }catch(e){
@@ -29,7 +29,7 @@ export default new Vuex.Store({
         },
         async getSearchTools({commit, state}){
             try{
-                let {data} = await Vue.axios.get(`/tool?search=${state.search}&tagonly=${state.tagonly}`);
+                let {data} = await Vue.axios.get(`/v1/tool?search=${state.search}&tagonly=${state.tagonly}`);
                 commit('SET_TOOLS', data);
                 return true;
             }catch(e){
@@ -39,7 +39,7 @@ export default new Vuex.Store({
         },
         async createTool({commit},payload){
             try{
-                let response = await Vue.axios.post('/tool', payload);
+                let response = await Vue.axios.post('/v1/tool', payload);
                 if(response.status == 201){
                     commit('ADD_TOOL', response.data)
                     return true;
@@ -52,7 +52,7 @@ export default new Vuex.Store({
         },
         async deleteTool({commit},payload){
             try{
-                let response = await Vue.axios.delete(`/tool/${payload.id}`);
+                let response = await Vue.axios.delete(`/v1/tool/${payload.id}`);
                 if(response.status === 200){
                     commit('DELETE_TOOL', payload.index)
                     return true;

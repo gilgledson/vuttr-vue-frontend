@@ -9,7 +9,12 @@
                     <v-row>
                         <v-col>
                             <h3 class="text-title-tool">
-                                  <text-highlight :queries="search">{{title}}</text-highlight>
+                                <template v-if="!$store.state.tagonly">
+                                  <text-highlight  :queries="search">{{title}}</text-highlight>
+                                </template>
+                                <template v-else>
+                                    {{title}}
+                                </template>
                             </h3>
                         </v-col>
                         <v-col>
